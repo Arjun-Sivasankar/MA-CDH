@@ -1,0 +1,17 @@
+{
+  "id": "kdigo-2024-ckd-diabetes",
+  "title": "KDIGO 2024 Clinical Practice Guideline for Diabetes in CKD",
+  "organization": "Kidney Disease: Improving Global Outcomes",
+  "year": 2024,
+  "sections": {
+    "treatment": {
+      "content": "Glucose-lowering therapy in CKD should prioritize renal and cardiovascular protection.",
+      "key_points": [
+        "Metformin safe until eGFR <30, then discontinue",
+        "SGLT2i: Continue until eGFR <20 for renal protection",
+        "GLP-1 RA: Safe and effective across all CKD stages",
+        "Avoid sulfonylureas in advanced CKD (hypoglycemia risk)"
+      ]
+    }
+  }
+}

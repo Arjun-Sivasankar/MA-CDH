@@ -1,0 +1,16 @@
+{
+  "id": "acc-aha-2023-cholesterol",
+  "title": "2023 ACC/AHA Guideline for Management of Blood Cholesterol",
+  "organization": "ACC/AHA",
+  "year": 2023,
+  "sections": {
+    "treatment": {
+      "content": "Statin therapy is primary prevention for ASCVD. Intensity based on risk.",
+      "key_points": [
+        "High-intensity statin for ASCVD or diabetes with risk factors",
+        "Moderate-intensity for primary prevention with 10-year risk >7.5%",
+        "Consider PCSK9 inhibitors if LDL goals not met on statin"
+      ]
+    }
+  }
+}

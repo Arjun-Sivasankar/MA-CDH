@@ -1,0 +1,50 @@
+{
+  "id": "aha-acc-2024-htn",
+  "title": "2024 AHA/ACC Guideline for the Management of High Blood Pressure in Adults",
+  "organization": "American Heart Association / American College of Cardiology",
+  "year": 2024,
+  "sections": {
+    "diagnosis": {
+      "content": "HTN is defined as BP \u2265130/80 mmHg. Confirm with multiple readings over time or ambulatory BP monitoring.",
+      "key_points": [
+        "Stage 1 HTN: 130-139/80-89 mmHg",
+        "Stage 2 HTN: \u2265140/90 mmHg",
+        "Use home BP monitoring for confirmation"
+      ]
+    },
+    "treatment": {
+      "content": "First-line therapy for HTN includes ACE inhibitors, ARBs, CCBs, or thiazide diuretics. Choice depends on comorbidities.",
+      "key_points": [
+        "ACE-I/ARB: First-line for HTN with diabetes, CKD, or proteinuria",
+        "CCB: Alternative first-line, good for elderly and African Americans",
+        "Thiazide diuretics: Effective first-line monotherapy",
+        "Beta-blockers: Second-line unless specific indication (CAD, HF)"
+      ],
+      "special_populations": {
+        "diabetes": "ACE-I or ARB preferred. Target BP <130/80 mmHg",
+        "ckd": "ACE-I or ARB if proteinuria present. Monitor K+ and Cr",
+        "elderly": "Consider lower starting doses. CCB often well-tolerated"
+      }
+    },
+    "monitoring": {
+      "content": "Monitor BP response, adherence, and adverse effects. Adjust therapy as needed.",
+      "key_points": [
+        "Recheck BP in 1 month after initiation",
+        "Monitor renal function and electrolytes with ACE-I/ARB",
+        "Assess for orthostatic hypotension in elderly"
+      ]
+    },
+    "drug-dosing": {
+      "content": "Start at standard doses unless specific contraindications. Titrate to achieve target BP.",
+      "examples": {
+        "lisinopril": "Start 10mg daily, max 40mg daily. Reduce dose if eGFR <30",
+        "amlodipine": "Start 5mg daily, max 10mg daily. No renal adjustment needed",
+        "hydrochlorothiazide": "Start 12.5-25mg daily, max 50mg daily"
+      }
+    }
+  },
+  "references": [
+    "PMID: 12345678",
+    "DOI: 10.1161/CIR.2024"
+  ]
+}

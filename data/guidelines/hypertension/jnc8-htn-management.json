@@ -1,0 +1,17 @@
+{
+  "id": "jnc8-htn-management",
+  "title": "JNC 8 Guidelines for Management of High Blood Pressure",
+  "organization": "Joint National Committee",
+  "year": 2014,
+  "sections": {
+    "treatment": {
+      "content": "Evidence-based recommendations for BP management in adults.",
+      "key_points": [
+        "General population <60 years: Treat if BP \u2265140/90",
+        "General population \u226560 years: Treat if BP \u2265150/90",
+        "Diabetes or CKD: Treat if BP \u2265140/90",
+        "African Americans: Thiazide or CCB preferred initial therapy"
+      ]
+    }
+  }
+}

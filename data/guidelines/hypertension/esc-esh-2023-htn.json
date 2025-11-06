@@ -1,0 +1,16 @@
+{
+  "id": "esc-esh-2023-htn",
+  "title": "2023 ESC/ESH Guidelines for Hypertension Management",
+  "organization": "European Society of Cardiology",
+  "year": 2023,
+  "sections": {
+    "treatment": {
+      "content": "Combination therapy preferred for most patients to improve adherence.",
+      "key_points": [
+        "Start with two-drug combination for most patients",
+        "ACE-I or ARB + CCB or diuretic",
+        "Single pill combinations improve adherence"
+      ]
+    }
+  }
+}

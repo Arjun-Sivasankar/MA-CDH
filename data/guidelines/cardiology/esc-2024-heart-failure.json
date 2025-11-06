@@ -1,0 +1,16 @@
+{
+  "id": "esc-2024-heart-failure",
+  "title": "2024 ESC Guidelines for Heart Failure Management",
+  "organization": "European Society of Cardiology",
+  "year": 2024,
+  "sections": {
+    "treatment": {
+      "content": "Guideline-directed medical therapy (GDMT) for HFrEF includes ACE-I/ARB/ARNI, beta-blockers, MRAs, and SGLT2 inhibitors.",
+      "key_points": [
+        "Quadruple therapy is standard: ACE-I/ARB/ARNI + BB + MRA + SGLT2i",
+        "Start SGLT2i early in all HFrEF patients",
+        "Titrate to target or maximally tolerated doses"
+      ]
+    }
+  }
+}

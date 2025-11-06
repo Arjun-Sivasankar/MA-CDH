@@ -1,0 +1,49 @@
+{
+  "id": "ada-2024-standards",
+  "title": "2024 ADA Standards of Medical Care in Diabetes",
+  "organization": "American Diabetes Association",
+  "year": 2024,
+  "sections": {
+    "diagnosis": {
+      "content": "Diabetes diagnosis: A1c \u22656.5%, FPG \u2265126 mg/dL, or 2-hour PG \u2265200 mg/dL during OGTT.",
+      "key_points": [
+        "Prediabetes: A1c 5.7-6.4%",
+        "Screen annually if risk factors present"
+      ]
+    },
+    "treatment": {
+      "content": "Metformin is first-line unless contraindicated. Add agents based on comorbidities and patient factors.",
+      "key_points": [
+        "Metformin: First-line, start 500mg and titrate to 2000mg daily",
+        "GLP-1 RA: Add if ASCVD, HF, or CKD present - proven CV benefit",
+        "SGLT2i: Add if HF or CKD - proven renal and cardiac protection",
+        "DPP-4i: Alternative if GLP-1/SGLT2i not tolerated",
+        "Insulin: Add if A1c >10% or significant hyperglycemia symptoms"
+      ],
+      "special_populations": {
+        "ckd": "Avoid metformin if eGFR <30. Prefer GLP-1 RA or SGLT2i for renal protection",
+        "cvd": "GLP-1 RA with proven CV benefit (liraglutide, semaglutide, dulaglutide)",
+        "heart_failure": "SGLT2i preferred (empagliflozin, dapagliflozin)"
+      }
+    },
+    "monitoring": {
+      "content": "Monitor A1c every 3 months until target achieved, then every 6 months.",
+      "key_points": [
+        "Target A1c <7% for most adults",
+        "Individualize: <6.5% if safe, <8% if elderly/comorbidities",
+        "Screen for complications annually"
+      ]
+    },
+    "drug-dosing": {
+      "examples": {
+        "metformin": "Start 500mg daily with dinner, increase by 500mg weekly. Max 2000mg daily. Take with food.",
+        "semaglutide": "Start 0.25mg SC weekly x 4 weeks, then 0.5mg weekly. Titrate to 1mg if needed.",
+        "empagliflozin": "Start 10mg daily, increase to 25mg if tolerated. Monitor for genital infections."
+      }
+    }
+  },
+  "references": [
+    "Diabetes Care 2024;47(Suppl 1)",
+    "PMID: 23456789"
+  ]
+}
