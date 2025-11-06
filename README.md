@@ -1,4 +1,4 @@
-# 🏥 Multi-Agent Medical AI System
+# Multi-Agent Medical AI System
 ### Agentic Backbone — LangGraph Variant
 
 A sophisticated multi-agent AI system for medical consultation and diagnosis, built with LangGraph. The system features specialized medical agents for different domains (cardiology, diabetes, hypertension) that collaborate to provide comprehensive medical insights.
