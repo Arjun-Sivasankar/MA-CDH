@@ -1,94 +1,71 @@
 from typing import Dict, Any
 from .base import BaseAgent
-from utils.parser import safe_json_parse
+from utils.parser import safe_json_parse  # kept for compatibility; not used here
+
+# Fixed execution order for strict sequential mode
+ORDER = ["cardiology", "hypertension", "diabetes"]
+VALID_SPECIALISTS = set(ORDER)
 
 
 class RouterAgent(BaseAgent):
-    """Routes queries to appropriate specialists"""
-    
+    """Routes queries to ALL specialists in a strict fixed order."""
+
     @property
     def system_prompt(self) -> str:
-        return """You are a medical triage coordinator. Analyze the clinical query and determine which specialists should be consulted.
-
-Available specialists:
-- cardiology (heart disease, BP management, cardiovascular risk)
-- diabetes (blood sugar control, diabetes complications)
-- hypertension (blood pressure management)
-
-For multi-morbidity cases (e.g., patient has HTN + diabetes + CKD), you MUST select ALL relevant specialists.
-
-Respond with valid JSON only (no markdown, no code blocks):
+        # Kept for API compatibility; not used in strict mode.
+        return """Sequential Routing Mode:
+Always involve ALL specialists in this exact order:
+1) cardiology
+2) hypertension
+3) diabetes
+Return JSON with these fields:
 {
-  "primary": "hypertension",
-  "consult": ["cardiology", "diabetes"],
+  "primary": "cardiology",
+  "consult": ["hypertension", "diabetes"],
   "requires_consensus": true,
   "urgency": "routine",
-  "reasoning": "Patient has HTN, T2D, and CKD - requires multi-specialist approach"
-}
+  "reasoning": "Sequential mode: forced to run all specialists"
+}"""
 
-Rules:
-- "primary" must be ONE of: "cardiology", "diabetes", "hypertension"
-- "consult" must be an array of additional specialists (can be empty)
-- For multi-condition patients, put the main concern in "primary" and others in "consult"
-- "urgency" must be one of: "routine", "urgent", "emergent"
-"""
-    
     def process(self, state: Dict[str, Any]) -> Dict[str, Any]:
-        """Route query to specialists"""
-        print("\n[ROUTER] Analyzing query...")
-        
-        messages = [
-            {"role": "system", "content": self.system_prompt},
-            {"role": "user", "content": state["user_msg"]}
-        ]
-        
-        res = self.llm.chat(messages)
-        content = res.get("content", "{}")
-        
-        routing = safe_json_parse(content, default={
-            "primary": "hypertension",
-            "consult": ["cardiology", "diabetes"],
+        """
+        Strict, hard-coded routing:
+        - Always run ALL three specialists
+        - Preserve fixed order: cardiology -> hypertension -> diabetes
+        - Mark requires_consensus = True
+        - Default urgency = "routine"
+        - Ignore LLM completely in this mode
+        """
+        print("\n[ROUTER] Sequential mode enabled — forcing all specialists in fixed order.")
+        user_msg = state.get("user_msg", "")
+
+        # Deterministic routing
+        primary = ORDER[0]
+        consult = ORDER[1:]
+
+        routing = {
+            "primary": primary,
+            "consult": consult,
             "requires_consensus": True,
             "urgency": "routine",
-            "reasoning": "Default routing - all specialists consulted"
-        })
-        
-        # Validation and cleanup
-        valid_specialists = ["cardiology", "diabetes", "hypertension"]
-        
-        # Fix primary if it's malformed
-        primary = routing.get("primary", "hypertension")
-        if primary not in valid_specialists:
-            # Check if it's a combined string like "cardiology|diabetes|hypertension"
-            if "|" in str(primary):
-                parts = str(primary).split("|")
-                primary = parts[0].strip()
-                # Add other parts to consult
-                consult = routing.get("consult", [])
-                if not isinstance(consult, list):
-                    consult = []
-                for part in parts[1:]:
-                    part = part.strip()
-                    if part in valid_specialists and part not in consult:
-                        consult.append(part)
-                routing["consult"] = consult
-            else:
-                # Default to hypertension if completely invalid
-                primary = "hypertension"
-        
-        routing["primary"] = primary
-        
-        # Ensure consult is a list
-        consult = routing.get("consult", [])
-        if not isinstance(consult, list):
-            consult = [consult] if consult else []
-        
-        # Filter consult to only valid specialists
-        consult = [s for s in consult if s in valid_specialists and s != primary]
-        routing["consult"] = consult
-        
+            "reasoning": "Sequential mode: forced to run all specialists (cardiology → hypertension → diabetes).",
+        }
+
+        # Defensive final cleanup (keeps compatibility with any downstream checks)
+        if routing.get("primary") not in VALID_SPECIALISTS:
+            routing["primary"] = primary
+
+        # Ensure consult is a list containing only valid specialists except primary, in fixed order
+        consult_list = routing.get("consult", [])
+        if not isinstance(consult_list, list):
+            consult_list = [consult_list] if consult_list else []
+        consult_list = [s for s in ORDER if s in VALID_SPECIALISTS and s != routing["primary"]]
+        routing["consult"] = consult_list
+
         print(f"[ROUTER] Primary: {routing['primary']}")
-        print(f"[ROUTER] Consult: {routing['consult']}")
+        print(f"[ROUTER] Consult (fixed order): {routing['consult']}")
+        print(f"[ROUTER] Urgency: {routing['urgency']}")
         print(f"[ROUTER] Reasoning: {routing.get('reasoning', 'N/A')}")
-        
+        print(f"[ROUTER] User message (for trace): {user_msg[:120]}{'...' if len(user_msg) > 120 else ''}")
+
         return {"routing": routing}
